@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Angular Calculator</title>
+	<link rel="stylesheet" href="/bower_components/bootstrap-css-only/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/bower_components/bootstrap-material-design/dist/css/bootstrap-material-design.min.css">
+	<link rel="stylesheet" href="/bower_components/bootstrap-material-design/dist/css/ripples.min.css">
+	<link rel="stylesheet" href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+</head>
+<body>
+	<div class="bs-component">
+		<div class="navbar navbar-default">
+			<div class="container-fluid">
+	              <div class="navbar-header">
+	                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+	                  <span class="icon-bar"></span>
+	                  <span class="icon-bar"></span>
+	                  <span class="icon-bar"></span>
+	                </button>
+	                <a class="navbar-brand" href="javascript:void(0)">Angular Calculator</a>
+	              </div>
+	              <div class="navbar-collapse collapse navbar-responsive-collapse">
+	              	<div class="pull-right navbar-brand">
+	              		Daniel Hopkins
+	              	</div>
+	              </div>
+	            </div>
+		</div>
+	</div>
+	<div class="container" ng-app="calculatorApp">
+		<div class="row">
+			<div class="spacer-double"></div>
+			<div class="col-sm-5 center-block" ng-controller="mainController">
+				<div class="panel panel-default" id="calculator">
+					<div class="panel-heading"><span ng-cloak ng-hide="showEquation">{{ number | negativeFilter}}</span><span ng-show="showEquation" ng-cloak>{{ equation | multiplyFilter | negativeFilter }}</span></div>
+					<div class="panel-body">
+						<div class="col-sm-6">
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="bs-component">
+											<button type="button" class="btn btn-raised btn-info" ng-click="clearCalculator()">AC</button>
+											<button type="button" class="btn btn-raised btn-default" ng-click="inputNumber('7')">7</button>
+											<button type="button" class="btn btn-raised btn-default" ng-click="inputNumber('4')">4</button>
+											<button type="button" class="btn btn-raised btn-default" ng-click="inputNumber('1')">1</button>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="bs-component">
+											<button type="button" class="btn btn-raised btn-default" ng-click="inputNumber('-')">+/&ndash;</button>
+											<button type="button" class="btn btn-raised btn-default" ng-click="inputNumber('8')">8</button>
+											<button type="button" class="btn btn-raised btn-default" ng-click="inputNumber('5')">5</button>
+											<button type="button" class="btn btn-raised btn-default" ng-click="inputNumber('2')">2</button>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="bs-component">
+											<button type="button" class="btn btn-raised btn-default" id="zero" ng-click="inputNumber('0')">0</button>
+										</div>
+									</div>
+								</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="col-sm-6">
+								<div class="bs-component">
+									<button type="button" class="btn btn-raised btn-default" ng-click="buildEquation(number, '/')">/</button>
+									<button type="button" class="btn btn-raised btn-default" ng-click="inputNumber('9')">9</button>
+									<button type="button" class="btn btn-raised btn-default" ng-click="inputNumber('6')">6</button>
+									<button type="button" class="btn btn-raised btn-default" ng-click="inputNumber('3')">3</button>
+									<button type="button" class="btn btn-raised btn-default" ng-click="inputNumber('.')">.</button>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="bs-component">
+									<button type="button" class="btn btn-raised btn-default" ng-click="buildEquation(number, '*')">X</button>
+									<button type="button" class="btn btn-raised btn-default" ng-click="buildEquation(number, '-')">&mdash;</button>
+									<button type="button" class="btn btn-raised btn-default" ng-click="buildEquation(number, '+')">+</button>
+									<button type="button" class="btn btn-raised btn-warning" id="equals" ng-click="evaluate(equation, number)">=</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-info">
+					<div class="panel-heading text-center">
+						<strong>Saved Equations</strong>
+					</div>
+					<div class="panel-body">
+						<ul class="list-group">
+							<li class="list-group-item" ng-repeat="equation in storedEquations" ng-cloak>{{ $index + 1 }}. {{ equation }}</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		<div class="row">
+			
+		</div>
+	</div>
+</body>
+<script></script>
+<script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/bower_components/bootstrap-material-design/dist/js/material.min.js"></script>
+<script type="text/javascript" src="/bower_components/bootstrap-material-design/dist/js/ripples.min.js"></script>
+<script type="text/javascript" src="/bower_components/mathjs/dist/math.min.js"></script>
+<script>
+	$.material.init();
+</script>
+</html>
