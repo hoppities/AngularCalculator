@@ -1,0 +1,23 @@
+{
+  "name": "calculator",
+  "authors": [
+    "hoppities <danielc.hopkins@gmail.com>"
+  ],
+  "description": "Simple Angular Calculator App",
+  "main": "index.html",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-css-only": "~3.3.6",
+    "bootstrap-material-design": "~0.5.7",
+    "mathjs": "~2.6.0"
+  }
+}
